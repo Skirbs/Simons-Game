@@ -1,0 +1,135 @@
+* {
+  box-sizing: border-box;
+}
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+body {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  display: grid;
+  place-items: center;
+}
+@keyframes background-move {
+  0% {
+    background-position-y: 0%;
+  }
+  50% {
+    background-position-y: 100%;
+  }
+  100% {
+    background-position-y: 0%;
+  }
+}
+@keyframes hovering {
+  0% {
+    translate: 0 0px;
+  }
+  50% {
+    translate: 0 5px;
+  }
+  100% {
+    translate: 0 0px;
+  }
+}
+.background {
+  position: fixed;
+  inset: 0;
+  background-image: linear-gradient(to top, #0f0b13, #4a3a58);
+  background-size: 120% 120%;
+  animation: background-move 25s infinite;
+
+  z-index: -10;
+}
+
+main {
+  width: 80%;
+  height: 80%;
+}
+
+h1,
+li,
+p {
+  font-size: 1.5rem;
+  text-shadow: 2px 0px 1px #0f0b13, 0px 2px 1px #0f0b13, -2px 0px 1px #0f0b13, 0px -2px 1px #0f0b13;
+  color: white;
+  font-family: "Belanosima", sans-serif;
+  animation: hovering 4.5s infinite;
+}
+
+h1 {
+  font-size: 3rem;
+  white-space: nowrap;
+}
+
+.btn-container {
+  flex: 1;
+
+  aspect-ratio: 1;
+  margin-top: 10px;
+  display: grid;
+  grid-template: repeat(2, 1fr) / repeat(2, 1fr);
+  place-content: center;
+  gap: 40px 40px;
+}
+
+.btn-container button {
+  border: 10px solid #0f0b13;
+  border-radius: 30px;
+  transition: 0.2s;
+
+  cursor: pointer;
+}
+.yellow {
+  background-image: linear-gradient(to top, rgb(100, 82, 0), yellow);
+}
+.blue {
+  background-image: linear-gradient(to top, rgb(10, 0, 95), blue);
+}
+.green {
+  background-image: linear-gradient(to top, rgb(4, 71, 2), green);
+}
+.red {
+  background-image: linear-gradient(to top, rgb(100, 0, 17), red);
+}
+
+.light {
+  filter: brightness(1.3);
+}
+
+.controls {
+  position: absolute;
+  left: 2vw;
+}
+
+.score {
+  position: absolute;
+  right: 3vw;
+}
+
+.score p {
+  position: relative;
+}
+
+.score :first-child {
+  font-size: 2.25rem;
+  &::after {
+    font-size: 2rem;
+  }
+}
+.score :last-child {
+  font-size: 2rem;
+  &::after {
+    font-size: 1.75rem;
+  }
+}
+
+.score :first-child::after,
+.score :last-child::after {
+  content: attr(score);
+  display: block;
+  text-align: center;
+}
